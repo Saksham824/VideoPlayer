@@ -192,6 +192,39 @@ app.post('/api/rename', (req, res) => {
     }
 });
 
+// 🗑️ Delete video endpoint
+app.delete("/api/delete/:filename", (req, res) => {
+    const filename = req.params.filename;
+
+    if (!filename) {
+        return res.status(400).json({ error: "Missing filename" });
+    }
+
+    const filePath = path.join(UPLOADS_DIR, filename);
+    const baseName = path.parse(filename).name;
+    const thumbPath = path.join(THUMBNAILS_DIR, `${baseName}.jpg`);
+
+    try {
+        if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+        if (fs.existsSync(thumbPath)) fs.unlinkSync(thumbPath);
+
+        // Return updated list
+        const files = fs.readdirSync(UPLOADS_DIR);
+        const videos = files
+            .filter(file => /\.(mp4|mkv|webm|avi|mov)$/i.test(file))
+            .map(file => ({
+                name: file,
+                url: `http://localhost:${PORT}/uploads/${file}`,
+            }));
+
+        res.json({ success: true, videos });
+    } catch (err) {
+        console.error("Delete error:", err);
+        res.status(500).json({ error: "Failed to delete video" });
+    }
+});
+
+
 // 🚀 Start server
 app.listen(PORT, () =>
     console.log(`🚀 Server running at http://localhost:${PORT}`)

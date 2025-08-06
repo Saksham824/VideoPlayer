@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import VideoCard from "../components/VideoCard";
+import axios from "axios";
 
 export default function Home() {
   const [videos, setVideos] = useState([]);
@@ -10,6 +11,32 @@ export default function Home() {
       .then((data) => setVideos(data.videos || []))
       .catch(console.error);
   }, []);
+
+  // Rename handler
+  const handleRename = async (oldName, newName) => {
+    try {
+      const res = await axios.post("http://localhost:5000/api/rename", {
+        oldName,
+        newName,
+      });
+      setVideos(res.data.videos);
+    } catch (err) {
+      alert("Failed to rename video");
+    }
+  };
+
+  // Delete handler
+  const handleDelete = async (filename) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:5000/api/delete/${filename}`
+      );
+      setVideos(res.data.videos);
+    } catch (err) {
+      alert("Failed to delete video");
+    }
+  };
+  
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 py-10 px-4">
@@ -32,6 +59,8 @@ export default function Home() {
                   id={vid._id || idx}
                   title={vid.name || `Video ${idx + 1}`}
                   videoUrl={vid.url}
+                   onRename={handleRename}
+                  onDelete={handleDelete}
                 />
               </div>
             ))}
