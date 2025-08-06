@@ -52,7 +52,7 @@ export default function About() {
               Ready to take control of your video experience?
             </p>
             <a
-              href="/signup"
+              href="/"
               className="mt-2 px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-black font-bold shadow-lg hover:scale-105 transition-transform"
             >
               Get Started with VideoHub

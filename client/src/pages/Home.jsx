@@ -6,8 +6,8 @@ export default function Home() {
 
   useEffect(() => {
     fetch("http://localhost:5000/videos")
-      .then(res => res.json())
-      .then(data => setVideos(data.videos || []))
+      .then((res) => res.json())
+      .then((data) => setVideos(data.videos || []))
       .catch(console.error);
   }, []);
 
@@ -23,10 +23,14 @@ export default function Home() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {videos.map((vid, idx) => (
-              <div key={idx} className="transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl">
+              <div
+                key={idx}
+                className="transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl"
+              >
                 <VideoCard
+                  key={idx}
+                  id={vid._id || idx}
                   title={vid.name || `Video ${idx + 1}`}
-                  thumbnail={vid.thumbnail || "/fallback.jpg"}
                   videoUrl={vid.url}
                 />
               </div>

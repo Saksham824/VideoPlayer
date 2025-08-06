@@ -3,11 +3,13 @@ import Home from "./pages/Home";
 import Upload from "./pages/Upload";
 import YouTube from "./pages/YouTube";
 import Navbar from "./components/Navbar";
-import Watch from "./pages/Watch";
+// import Watch from "./pages/Watch";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
+import PlayFromLink from "./pages/PlayFromLink";
+import Watch from "./components/Watch";
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/watch" element={<Watch />} />
+        <Route path="/watch" element={<PlayFromLink />} />
+        <Route path="/watch/:id" element={<Watch />} />
         <Route path="/upload" element={<Upload />} />
         <Route path="/youtube" element={<YouTube />} />
         <Route path="/about" element={<About/>}/>

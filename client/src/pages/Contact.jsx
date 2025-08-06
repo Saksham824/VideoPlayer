@@ -33,26 +33,26 @@ export default function Contact() {
               aria-label="Contact form"
             >
               <label className="flex flex-col gap-1">
-                <span className="font-semibold text-yellow-400">Name</span>
+                <span className="font-semibold text-pink-400">Name</span>
                 <input
                   type="text"
                   name="name"
                   required
                   value={form.name}
                   onChange={handleChange}
-                  className="rounded-lg px-4 py-2 bg-gray-800 bg-opacity-70 border border-gray-700 focus:border-pink-400 focus:ring-2 focus:ring-pink-400/30 outline-none transition-all text-white placeholder-gray-400"
+                  className="rounded-lg px-4 py-2 bg-gray-800 bg-opacity-70 border border-gray-700 focus:border-pink-400 focus:ring-1 focus:ring-pink-400 outline-none transition-all text-white placeholder-gray-400"
                   placeholder="Your Name"
                 />
               </label>
               <label className="flex flex-col gap-1">
-                <span className="font-semibold text-pink-400">Email</span>
+                <span className="font-semibold text-yellow-400">Email</span>
                 <input
                   type="email"
                   name="email"
                   required
                   value={form.email}
                   onChange={handleChange}
-                  className="rounded-lg px-4 py-2 bg-gray-800 bg-opacity-70 border border-gray-700 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/30 outline-none transition-all text-white placeholder-gray-400"
+                  className="rounded-lg px-4 py-2 bg-gray-800 bg-opacity-70 border border-gray-700 focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400 outline-none transition-all text-white placeholder-gray-400"
                   placeholder="you@email.com"
                 />
               </label>
@@ -64,7 +64,7 @@ export default function Contact() {
                   rows={4}
                   value={form.message}
                   onChange={handleChange}
-                  className="rounded-lg px-4 py-2 bg-gray-800 bg-opacity-70 border border-gray-700 focus:border-purple-400 focus:ring-2 focus:ring-purple-400/30 outline-none transition-all text-white placeholder-gray-400 resize-none"
+                  className="rounded-lg px-4 py-2 bg-gray-800 bg-opacity-70 border border-gray-700 focus:border-purple-400 focus:ring-1 focus:ring-purple-400 outline-none transition-all text-white placeholder-gray-400 resize-none"
                   placeholder="How can we help you?"
                 />
               </label>
